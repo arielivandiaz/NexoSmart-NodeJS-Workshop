@@ -2,11 +2,11 @@
 
 // set up ======================================================================
 // get all the tools we need
-var express  = require('express');
-var session  = require('express-session');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
+let express  = require('express');
+let session  = require('express-session');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let morgan = require('morgan');
 var app      = express();
 var port     = process.env.PORT || 3838;
 
@@ -42,10 +42,10 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
  } )); // session secret
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 
 
 // routes ======================================================================

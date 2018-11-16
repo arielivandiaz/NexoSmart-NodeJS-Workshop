@@ -142,7 +142,6 @@ module.exports = function (app, passport, db_sql) {
 
 						res.render('admin_user.ejs', {
 							user: rows2[0],
-
 							payments: rows3,
 							type_payments: rows4,
 							message: '',
