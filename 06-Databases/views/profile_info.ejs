@@ -1,0 +1,126 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<%- include partials/header.ejs %>
+
+<body>
+	<%- include partials/navbar.ejs %>
+
+	<section id="login">
+		<div class="row">
+			<div class="col-lg-1 col-md-1 col-xs-12 "></div>
+			<div class="col-lg-5 col-md-5 col-xs-12 ">
+
+				<h3 style="float: left; padding: 1em; display: flex;">Payments history</h3>
+
+
+
+				<table class="table table-light">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">type</th>
+							<th scope="col">date_in</th>
+							<th scope="col">date_out</th>
+							<th scope="col">app_count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for (var pay in payments) { %>
+						<tr>
+							<th scope="row">1</th>
+							<td>
+								<%= payments[pay].type %>
+							</td>
+							<td>
+								<%= payments[pay].date_in %>
+							</td>
+							<td>
+								<%= payments[pay].date_out %>
+							</td>
+							<td>
+								<%= payments[pay].app_count %>
+							</td>
+						</tr>
+						<% } %>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-lg-1 col-md-1 col-xs-12 "></div>
+			<div class="col-lg-4 col-md-4 col-xs-12">
+
+
+				<section class="form">
+					<div class=" px-3" id="my_logo_demo">
+						<h1>NexoSmart</h1>
+						<h4>Edit your info</h4>
+					</div>
+
+					<% if (message.length > 0) { %>
+					<div class="alert alert-danger">
+						<%= message %>
+					</div>
+					<% } %>
+
+					<% if (success) { %>
+					<div class="alert alert-success" role="alert">
+						Perfil Updated Successful!
+					</div>
+					<% } %>
+
+					<form action="/profile_info" method="post">
+						<div class="form-group">
+							<input type="text" class="form-control" name="name" value="<%= user.name %>">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" name="lastname" value="<%= user.lastname %>">
+						</div>
+
+						<div class="form-group">
+							<input type="email" class="form-control" name="email" value="<%= user.email %>">
+						</div>
+
+						<div class="form-group">
+							<input type="email" class="form-control" name="email_check" value="Repeat new E-mail">
+						</div>
+
+						<div class="form-group">
+							<input type="tel" class="form-control" name="phone" value="<%= user.phone %>">
+						</div>
+
+						<div class="form-group">
+							<input type="date" class="form-control" name="birth_date" value="<%= user.birth_date %>">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" name="address" value="<%= user.address %>">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" name="city" value="<%= user.city %>">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control" name="country" value="<%= user.country %>">
+						</div>
+
+						<div class="row btns">
+							<div class="col-lg-6 col-md-6 col-xm-12">
+								<button type="submit" class="btn btn-danger btn-lg" id="btn_log_login">Submit</button>
+							</div>
+							<div class="col-lg-6 col-md-6 col-xm-12">
+								<button type="reset" value="Reset" class="btn btn-secondary btn-lg" id="btn_log_signup">Reset</button>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</section>
+	<!-- --------------------------------------------------------------------------------------------------- -->
+
+</body>
+
+</html>

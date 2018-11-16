@@ -1,0 +1,112 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<%- include partials/header.ejs %>
+
+<body>
+    <%- include partials/navbar_admin.ejs %>
+
+    <section id="login">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-xs-12 "></div>
+            <div class="col-lg-5 col-md-5 col-xs-12" style="padding-top: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Payments history</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <form action="/add_payment" method="post">
+                            <div class="form" id="form_login">
+                                <div class="row btns ">
+
+                                    <div style="float: right;  display: flex;">
+                                        <div style="padding-right: 1em;">
+                                            <input type="text" class="form-control" name="user_id" value="<%= user.id %>"
+                                                style="display: none;">
+                                            <select name="payment_type" class="form-control" style="width: 14em;">
+
+                                                <% for(var i = 0; i < type_payments.length; i++) { %>
+                                                <% if (i == 0) { %>
+                                                <option value='<%= i +1 %>'>
+                                                    <%= type_payments[i].name %>
+                                                </option>
+                                                <% } else { %>
+                                                <option value='<%= i + 1  %>'>
+                                                    <%= type_payments[i].name %>
+                                                </option>
+                                                <% } %>
+                                                <p>
+                                                    <%= type_payments[i].mount %>,
+                                                    <%= type_payments[i].type %> ,
+                                                    <%= type_payments[i].period %>
+                                                </p>
+                                                <% } %>
+                                            </select>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary btn-lg" id="btn_log_login">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <table class="table col-md-10">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Date In</th>
+                            <th scope="col">Date Out</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (var pay in payments) { %>
+
+                        <tr>
+                            <th scope="row">
+                                <%= payments[pay].id %>
+                            </th>
+                            <td>
+                                <%= payments[pay].type %>
+                            </td>
+                            <td>
+                                <%= payments[pay].date_in %>
+                            </td>
+                            <td>
+                                <%= payments[pay].date_out %>
+                            </td>
+                            <td>
+                                <% if (payments[pay].status == 1){ %>
+                                <span>Active</span>
+                                <% } else { %>
+                                <span>Expired</span>
+                                <% } %>
+                            </td>
+                        </tr>
+
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-5 col-md-5 col-xs-12" style="padding-top: 2em;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>User Info</h3>
+                    </div>
+
+                    <ul>
+                        <%  Object.keys(user).forEach(function (key) { %>
+                        <li> <strong>
+                                <%= key %></strong><span style="float: right">
+                                <%= user[key] %></span></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

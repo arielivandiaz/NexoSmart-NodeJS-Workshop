@@ -1,0 +1,14 @@
+<script src="jquery/dist/jquery.min.js"></script>
+<script src="socket.io-client/dist/socket.io.js"></script>
+<script>
+   jQuery(document).ready(function() {
+      var socket = io.connect();
+      var form = jQuery('#myForm');
+      var txt = jQuery('#txt');
+      var chatArea = jQuery('#chatArea');
+
+      socket.on('new message', function(data){
+         chatArea.append('<div class="well">'+data.message+'</div>');
+      });
+   });
+</script>

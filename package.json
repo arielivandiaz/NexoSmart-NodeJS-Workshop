@@ -2,7 +2,7 @@
   "name": "nexosmart-nodejs-workshop",
   "version": "1.0.0",
   "description": "",
-  "main": "00-HelloWorld.js",
+  "main": "01-HelloWorld.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
