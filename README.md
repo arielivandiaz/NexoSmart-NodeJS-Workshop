@@ -58,4 +58,4 @@ $ node extra_scripts/create_database.js
 Start the project and check how this works.
 
 
-#Enjoy!
+# Enjoy!
