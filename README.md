@@ -33,7 +33,8 @@ Explore folders and files
 Run
 
 ```sh
-$ npm install 
+$ npm install ç
+$ npm start
 ```
 
 ## Section 3 : Promises, Error Handling, Sockets
@@ -58,4 +59,7 @@ $ node extra_scripts/create_database.js
 Start the project and check how this works.
 
 
-#Enjoy!
+```sh
+$ npm start
+```
+# Enjoy!
