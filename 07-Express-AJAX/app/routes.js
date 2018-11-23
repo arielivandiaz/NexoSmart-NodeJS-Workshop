@@ -12,7 +12,8 @@ module.exports =  (app) => {
 
 	app.get('/welcome', function(req,res){
 
-		res.send("craig");
+		console.log(req.query);
+		res.write("craig");
 
 	});
 
@@ -26,3 +27,14 @@ module.exports =  (app) => {
     });
 
 }
+
+
+app.get('/calculate', function(req,res){
+
+	res.render('waiting.ejs');
+
+	cal_result().then(function (){     //Function in a promise, it's take 8-10 seconds
+		res.redirect('/success.ejs');
+	});
+
+});
